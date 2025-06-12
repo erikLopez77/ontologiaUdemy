@@ -1,0 +1,13 @@
+#en este caso se usa data p/instancias y concepts p/clases/tipos/concepts
+@prefix data: <https://mymovies.com/data#>.
+@prefix concepts: <https://mymovies.com/concepts#>.
+
+data:KingdomOfHeaven concepts:hasActor data:OrlandoBloom.
+data:KingdomOfHeaven concepts:is concepts:movie.
+data:KingdomOfHeaven concepts:hasRole data:Balian.
+
+data:OrlandoBloom concepts:isFrom data:UK.
+data:OrlandoBloom concepts:actsAs data:Balian.
+data:OrlandoBloom concepts:hasOccupation concepts:Actor.
+
+data:Balian concepts:hasOccupation concepts:Blacksmith.
