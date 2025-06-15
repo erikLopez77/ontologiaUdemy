@@ -1,6 +1,7 @@
 #en este caso se usa data p/instancias y concepts p/clases/tipos/concepts
 @prefix data: <https://mymovies.com/data#>.
 @prefix concepts: <https://mymovies.com/concepts#>.
+@prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
 data:KingdomOfHeaven concepts:hasActor data:OrlandoBloom.
 data:KingdomOfHeaven concepts:is concepts:movie.
@@ -8,6 +9,9 @@ data:KingdomOfHeaven concepts:hasRole data:Balian.
 
 data:OrlandoBloom concepts:isFrom data:UK.
 data:OrlandoBloom concepts:actsAs data:Balian.
-data:OrlandoBloom concepts:hasOccupation concepts:Actor.
+#data:OrlandoBloom concepts:hasOccupation/a concepts:Actor.
+data:OrlandoBloom rdf:type concepts:Actor.
 
-data:Balian concepts:hasOccupation concepts:Blacksmith.
+#data:Balian concepts:hasOccupation concepts:Blacksmith.
+data:Balian rdf:type concepts:Blacksmith.
+
