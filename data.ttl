@@ -2,7 +2,7 @@
 @prefix data: <https://mymovies.com/data#>.
 @prefix concepts: <https://mymovies.com/concepts#>.
 @prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 #los ; se usam para separar los predicados de un mismo sujeto
 #las , separan los objetos de un predicado de un objeto
 #data:KingdomOfHeaven concepts:is concepts:movie.
@@ -12,6 +12,11 @@ data:KingdomOfHeaven rdf:type concepts:movie;
                                       data:Baldwin,
                                       data:Saladin;
                      concepts:hasActor data:OrlandoBloom;
+                     concepts:releaseYear "2005"^^xsd:integer;
+                     concepts:originalLanguage "English"^^xsd:string;
+                     concepts:originalDuration 138;#minutes
+                     concepts:title "Kingdom of Heaven"@en,
+                                    "Koenigreich der Himel"@de;
 .
 #data:OrlandoBloom concepts:hasOccupation/a concepts:Actor.
 data:OrlandoBloom rdf:type concepts:Actor;
