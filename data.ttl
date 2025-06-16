@@ -3,14 +3,22 @@
 @prefix concepts: <https://mymovies.com/concepts#>.
 @prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
-data:KingdomOfHeaven concepts:hasActor data:OrlandoBloom.
-data:KingdomOfHeaven concepts:is concepts:movie.
-data:KingdomOfHeaven concepts:hasRole data:Balian.
-
-data:OrlandoBloom concepts:isFrom data:UK.
-data:OrlandoBloom concepts:actsAs data:Balian.
+#los ; se usam para separar los predicados de un mismo sujeto
+#las , separan los objetos de un predicado de un objeto
+#data:KingdomOfHeaven concepts:is concepts:movie.
+data:KingdomOfHeaven rdf:type concepts:movie;
+                     concepts:hasRole data:Balian,
+                                      data:Sybilla,
+                                      data:Baldwin,
+                                      data:Saladin;
+                     concepts:hasActor data:OrlandoBloom;
+.
 #data:OrlandoBloom concepts:hasOccupation/a concepts:Actor.
-data:OrlandoBloom rdf:type concepts:Actor.
+data:OrlandoBloom rdf:type concepts:Actor;
+                  concepts:isFrom data:UK;
+                  concepts:actsAs data:Balian;
+.
+
 
 #data:Balian concepts:hasOccupation concepts:Blacksmith.
 data:Balian rdf:type concepts:Blacksmith.
