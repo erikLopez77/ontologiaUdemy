@@ -17,6 +17,17 @@ data:KingdomOfHeaven rdf:type concepts:movie;
                      concepts:originalDuration 138;#minutes
                      concepts:title "Kingdom of Heaven"@en,
                                     "Koenigreich der Himel"@de;
+                     concepts:hasReview [
+                        concepts:rating 5;
+                        concepts:reviewtext "A great and entertaining movie"
+                     ];
+                     concepts:hasReview[
+                        concepts:rating 4;
+                        concepts:reviewtext "A visiually stunning movie with great actors.";
+                        concepts:reviewComment[
+                            concepts:reviewCommentText "This is a great review" 
+                        ]
+                     ];
 .
 #data:OrlandoBloom concepts:hasOccupation/a concepts:Actor.
 data:OrlandoBloom rdf:type concepts:Actor;
