@@ -25,7 +25,7 @@ data:KingdomOfHeaven rdf:type concepts:movie;
                         concepts:rating 4;
                         concepts:reviewtext "A visiually stunning movie with great actors.";
                         concepts:reviewComment[
-                            concepts:reviewCommentText "This is a great review" 
+                            concepts:reviewCommentText "This is a great review"
                         ]
                      ];
 .
@@ -39,3 +39,4 @@ data:OrlandoBloom rdf:type concepts:Actor;
 #data:Balian concepts:hasOccupation concepts:Blacksmith.
 data:Balian rdf:type concepts:Blacksmith.
 
+data:LordOfTheRingsTrilogs concepts:hasMovieParts (data:TheFellowshipOfTheRing data:TheTwoTowers data:TheReturnOfTheKing)
