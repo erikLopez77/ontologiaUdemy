@@ -1,0 +1,34 @@
+# Consulta para obtener información de películas con datos opcionales
+SELECT DISTINCT ?title ?runtime ?directorLabel ?countryLabel
+WHERE {
+    # 1. Encontrar recursos que sean películas (tipo dbo:Film)
+    ?film a dbo:Film .
+    
+    # 2. Obtener el título en inglés de cada película
+    ?film rdfs:label ?title .
+    FILTER(lang(?title) = "en")  # Filtra solo títulos en inglés
+    
+    # 3. Filtrar por título usando expresión regular (búsqueda insensible a may/min)
+    FILTER(regex(str(?title), "{sparql_param}", "i"))
+    
+    # 4. Bloque OPCIONAL para obtener la duración de la película (si existe)
+    optional{
+        ?film dbo:runtime ?runtime.  # Propiedad específica para duración
+    }
+    
+    # 5. Bloque OPCIONAL para obtener el director (si existe)
+    optional{
+        ?film dbo:director ?director.  # Relación a recurso director
+        ?director rdfs:label ?directorLabel.  # Label del director
+        FILTER(lang(?directorLabel)="en")  # Solo labels en inglés
+    }
+    
+    # 6. Bloque OPCIONAL para obtener el país (si existe)
+    optional{
+        ?film dbo:country ?country.  # Relación a recurso país
+        ?country rdfs:label ?countryLabel.  # Label del país
+        FILTER(lang(?countryLabel)="en")  # Solo labels en inglés
+    }
+}
+# Limitar resultados a 10 para evitar sobrecarga
+LIMIT 10
