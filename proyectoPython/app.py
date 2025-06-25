@@ -4,11 +4,9 @@ from sparql_processor import run_sparql_query
 
 st.title("Film finder")
 film_name = st.text_input("Enter the name of a film")
-st.button("Search")
 
-if st.button("search") or film_name:
-    results = run_sparql_query(sparql_param=film_name,
-                                sparq_file="./sparql_queries/film_details.sparql")
+if st.button("Search") or film_name:
+    results = run_sparql_query(sparql_param=film_name,sparq_file="./proyectoPython/sparql_queries/film_details.sparql")
     if results["results"] ["bindings"]:
         columns=["title", "runtime", "directorLabel","countryLabel"]
 
@@ -17,7 +15,11 @@ if st.button("search") or film_name:
             row_data={}
             for column in columns:
                 if result.get(column):
-                    row_data(column)=result[column][]
-
+                    row_data[column]=result[column]["value"]
+                else:
+                    row_data[column]="-"
+            table_data.append(row_data)
+        table_data= pd.DataFrame(table_data)
+        st.dataFrame(table_data)
     else:
         st.write("No results found for the entered film name.")
