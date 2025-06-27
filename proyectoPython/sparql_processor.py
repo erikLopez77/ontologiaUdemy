@@ -17,8 +17,9 @@ def run_sparql_query(sparql_param, sparql_file):
         # ejecuta la consulta y la convierte a JSON
         ret = sparql_wrapper.queryAndConvert()
         # se itera sobre los resultados y se retornan los datos obtenidos
-        for r in ret["results"]["bindings"]:
-            print(r)
+        """for r in ret["results"]["bindings"]:
+            print(r)"""
+        print(ret)
         return ret
     except Exception as e:
         print(e)
