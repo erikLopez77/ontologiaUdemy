@@ -1,6 +1,6 @@
-#query 2
-# Consulta para obtener información de películas con datos opcionales
-SELECT DISTINCT ?title ?runtime ?directorLabel ?countryLabel
+# query 3
+# Consulta para obtener información de películas con datos opcionales y al final muestra el no de peliculas disntintas
+SELECT DISTINCT ?title ?runtime ?directorLabel ?countryLabel ?filmNumber
 WHERE {
     # 1. Encontrar recursos que sean películas (tipo dbo:Film)
     ?film a dbo:Film .
@@ -30,6 +30,13 @@ WHERE {
         ?country rdfs:label ?countryLabel.  # Label del país
         FILTER(lang(?countryLabel)="en")  # Solo labels en inglés
     }
+    {
+        SELECT DISTINCT COUNT (?sFilm) AS ?filmNumber
+        WHERE{
+            ?sFilm a dbo:Film.
+            ?sFilm rdfs:label ?sTitle.
+            FILTER(regex(str(?sTitle),"{sparql_param}","i"))
+            FILTER(lang(?sTitle)="en")
+        }
+    }
 }
-# Limitar resultados a 10 para evitar sobrecarga
-LIMIT 10

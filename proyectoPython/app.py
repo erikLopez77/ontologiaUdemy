@@ -7,7 +7,7 @@ film_name = st.text_input("Enter the name of a film")
 
 if st.button("Search") or film_name:
     results = run_sparql_query(sparql_param=film_name,
-                               sparql_file="./sparql_queries/film_details.sparql")
+                               sparql_file="./sparql_queries/film_details_with_number.sparql")
     if results["results"]["bindings"]:
         # definimos las columnas
         columns = ["title", "runtime", "directorLabel", "countryLabel"]
@@ -26,5 +26,9 @@ if st.button("Search") or film_name:
         table_data = pd.DataFrame(table_data)
         # se añade al panel
         st.dataframe(table_data)
+
+        # se agrega etiqueta que nos da el numero de peliculas distintas (nuevo query)
+        film_number = results["results"]["bindings"][0]["filmNumber"]["value"]
+        st.write("Number of film results: "+film_number)
     else:
         st.write("No results found for the entered film name.")
