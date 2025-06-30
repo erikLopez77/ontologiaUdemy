@@ -16,6 +16,12 @@ dbo:starring rdfs:domain dbo:Film;
              rdfs:range ext:Actor;
 .
 ext:Director rdfs:subClassOf dbo:Person;
+             rdfs:label "Director"@en,
+                        "Regisseur"@de;
+             rdfs:comment "Someone who directs a film"@en,
+                          "Jemand der Regie bei einem Film Führt"@de;
+             rdfs:seeAlso dbo:Film;
+             rdfs:isDefinedBy dbo:director;
 .
 ext:Actor rdfs:subClassOf dbo:Person;
 .
