@@ -1,0 +1,21 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix ext: <http://example.org/tbox#> .
+
+dbo:Film rdfs:subClassOf ext:Media,
+                         ext:CreativeWork;
+.
+ext:CreativeWork rdfs:subClassOf ext:Work;
+.
+dbo:director rdfs:domain dbo:Film;
+             rdfs:range ext:Director;
+.
+dbo:starring rdfs:domain dbo:Film;
+             rdfs:range ext:Actor;
+.
+ext:Director rdfs:subClassOf dbo:Person;
+.
+ext:Actor rdfs:subClassOf dbo:Person;
+.

@@ -46,19 +46,20 @@ if (st.button("Search") or film_name):
             s = binding["s"]["value"]
             p = binding["p"]["value"]
             o = binding["o"]["value"]
-
+            # si no existe el nodo se crea y se agrega al diccionario
             if s not in nodes:
                 subject_node = Node(id=s, label=s)
                 nodes[s] = subject_node
             if o not in nodes:
                 object_node = Node(id=o, label=o)
                 nodes[o] = object_node
-
+            # se crea la arista y se agrega a la lista edges
             edge = Edge(source=s, target=o, label=p)
             edges.append(edge)
-
+        # configuracion del grafo
         config = Config(width=750, height=950, directed=True,
                         physics=True, hierarchical=False)
+        # se renderiza el grafo en la pagina
         agraph(nodes=list(nodes.values()), edges=edges, config=config)
     else:
         st.write("No results found for the entered film name.")
