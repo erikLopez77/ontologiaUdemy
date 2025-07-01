@@ -3,17 +3,29 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix ext: <http://example.org/tbox#> .
+@prefix schema: <http://schema.org/> .
 
 dbo:Film rdfs:subClassOf ext:Media,
                          ext:CreativeWork;
 .
 ext:CreativeWork rdfs:subClassOf ext:Work;
 .
+#en estas clases director y actor su ns "ext" es para mi ontologia (rdfs)
+#en rdf el ns "dbr" es para instancias del mundo real, asi los mantenemos separados
 dbo:director rdfs:domain dbo:Film;
              rdfs:range ext:Director;
 .
 dbo:starring rdfs:domain dbo:Film;
              rdfs:range ext:Actor;
+.
+dbo:releaseDate rdfs:domain dbo:Film;
+                rdfs:range xsd:date;
+.
+dbo:genre rdfs:domain dbo:Film;
+          rdfs:range schema:Genre;
+.
+dbo:runtime rdfs:domain dbo:Film;
+            rdfs:range xsd:integer;
 .
 ext:Director rdfs:subClassOf dbo:Person;
              rdfs:label "Director"@en,
